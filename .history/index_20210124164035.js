@@ -35,6 +35,9 @@ console.log(storageRef)
   count.on('value', (snapshot) => {
     countData = snapshot.val();
     app.locals.count = countData.count;
+    $.ajax({url: "/index", success: function(result){
+      $("#div1").html(result);
+    }});
     console.log(countData);
   });
   var locationData;
@@ -47,6 +50,9 @@ console.log(storageRef)
 
   var list = ['','',''];
 
+
+
+  
 app.get('/' ,(req,res)=>{
     res.render('index',  {list:list});
 });

@@ -1,7 +1,6 @@
 <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-storage.js"></script>
-<script src="index.js" ></script>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,7 +39,7 @@
     <div class="container my-auto">
       <div class="row my-auto">
         <div class="col-md-6 col-lg-6 text-center main">
-          <h1 class="mt-5" id="location">Location</h1>
+          <h1 class="mt-5">Location</h1>
           <p>X: <%=location.x%></p>
           <p>Y: <%=location.y%></p>
           
@@ -53,15 +52,15 @@
             </table>
         </div>
         <div class="col-md-6 col-lg-6 text-center main">
-            <h1 class="mt-5">Count Of Location Records</h1>
+            <h1 class="mt-5">Count</h1>
+            <p id='count'>A</p>
             <%=count%>
           </div>
       </div>
-      <button id="refresh">
+    </div>
+    <button id="refresh">
         Refresh the page
     </button>
-    </div>
-
     <div class="container text-muted">
 
       <!-- cards -->
@@ -155,12 +154,10 @@
             $('#refresh').on('click', function(){
                 location.reload();
             });
-            $('#count')[0].innerHTML = app.locals.count;
         });
-         
 
       </script>  
-      
+       <script src="index.js" ></script>
   </body>
 </html>
 

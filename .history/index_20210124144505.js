@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-var ejs = require('ejs');
 const firebase = require("firebase/app");
 require('firebase/auth');
 require('firebase/database');
@@ -34,7 +33,7 @@ console.log(storageRef)
   var count = firebase.database().ref('Count');
   count.on('value', (snapshot) => {
     countData = snapshot.val();
-    app.locals.count = countData.count;
+    app.locals.count = countData;
     console.log(countData);
   });
   var locationData;

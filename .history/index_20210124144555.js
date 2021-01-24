@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-var ejs = require('ejs');
 const firebase = require("firebase/app");
 require('firebase/auth');
 require('firebase/database');
@@ -48,7 +47,7 @@ console.log(storageRef)
   var list = ['','',''];
 
 app.get('/' ,(req,res)=>{
-    res.render('index',  {list:list});
+    res.render('index',  {list:list,location: locationData, count: countData.count});
 });
 
 app.set('view engine','ejs');

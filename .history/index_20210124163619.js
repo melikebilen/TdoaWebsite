@@ -47,6 +47,7 @@ console.log(storageRef)
 
   var list = ['','',''];
 
+  
 app.get('/' ,(req,res)=>{
     res.render('index',  {list:list});
 });

@@ -33,6 +33,9 @@ console.log(storageRef)
   var countData;
   var count = firebase.database().ref('Count');
   count.on('value', (snapshot) => {
+      $.ajax({url: "/index", success: function(result){
+        $("#div1").html(result);
+      }});
     countData = snapshot.val();
     app.locals.count = countData.count;
     console.log(countData);
@@ -47,6 +50,9 @@ console.log(storageRef)
 
   var list = ['','',''];
 
+
+
+  
 app.get('/' ,(req,res)=>{
     res.render('index',  {list:list});
 });

@@ -47,8 +47,12 @@ console.log(storageRef)
 
   var list = ['','',''];
 
+  
 app.get('/' ,(req,res)=>{
-    res.render('index',  {list:list});
+  ejs.renderFile(__dirname + '/views/index.ejs', function(err, data) {
+    console.log(err || data);
+});
+    //res.render('index',  {list:list});
 });
 
 app.set('view engine','ejs');

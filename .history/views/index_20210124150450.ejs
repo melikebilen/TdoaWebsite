@@ -53,15 +53,14 @@
             </table>
         </div>
         <div class="col-md-6 col-lg-6 text-center main">
-            <h1 class="mt-5">Count Of Location Records</h1>
-            <%=count%>
+            <h1 class="mt-5">Count</h1>
+            <h1 class="mt-5" id='count'><%=count%></h1>
           </div>
       </div>
-      <button id="refresh">
+    </div>
+    <button id="refresh">
         Refresh the page
     </button>
-    </div>
-
     <div class="container text-muted">
 
       <!-- cards -->
@@ -155,7 +154,7 @@
             $('#refresh').on('click', function(){
                 location.reload();
             });
-            $('#count')[0].innerHTML = app.locals.count;
+            $('#count')[0].innerHTML = count;
         });
          
 

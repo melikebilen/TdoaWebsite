@@ -1,11 +1,12 @@
 const express = require('express');
 const path = require('path');
-var ejs = require('ejs');
 const firebase = require("firebase/app");
 require('firebase/auth');
 require('firebase/database');
 require('firebase/storage');
+global.XMLHttpRequest = require("xhr2");
 //const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 
 const app = express();
 
@@ -23,6 +24,7 @@ var firebaseConfig = {
   };
 
 firebase.initializeApp(firebaseConfig);
+admin.initializeApp(firebaseConfig);
 
 
 var image;
@@ -34,21 +36,20 @@ console.log(storageRef)
   var count = firebase.database().ref('Count');
   count.on('value', (snapshot) => {
     countData = snapshot.val();
-    app.locals.count = countData.count;
+
     console.log(countData);
   });
   var locationData;
   var allData = firebase.database().ref('RobotLocation');
   allData.on('value', async (snapshot) => {
     locationData = await snapshot.val();
-    app.locals.location = locationData;
     console.log(locationData);
   }); 
 
   var list = ['','',''];
 
 app.get('/' ,(req,res)=>{
-    res.render('index',  {list:list});
+    res.render('index',  {list:list,location: locationData, count: countData.count});
 });
 
 app.set('view engine','ejs');
